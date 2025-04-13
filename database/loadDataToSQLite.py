@@ -17,12 +17,12 @@ class loadDataToSQLite:
         csv_files = glob.glob('*.csv') # Get list files
         for file in csv_files:
             with open(file, 'r', encoding='utf-8') as f:
-                reader = csv.reader(f) # Читаем CSV файл
-                header = next(reader)  # Пропускаем заголовок
+                reader = csv.reader(f)
+                header = next(reader)
                 print(file)
-                create_table = f"CREATE TABLE IF NOT EXISTS {file.replace('.csv', '')} ({', '.join(header)})" # Создаем таблицу (если не существует)
+                create_table = f"CREATE TABLE IF NOT EXISTS {file.replace('.csv', '')} ({', '.join(header)})"
                 cursor.execute(create_table)
                 insert_query = f"INSERT INTO yandex VALUES ({', '.join(['?'] * len(header))})"
                 cursor.executemany(insert_query, reader)
-        conn.commit() # Сохраняем изменения и закрываем соединение
+        conn.commit()
         conn.close()
