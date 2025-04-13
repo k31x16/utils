@@ -14,7 +14,7 @@ class loadDataToSQLite:
         os.chdir(self.path_input_files)
         conn = sqlite3.connect(self.path_database)
         cursor = conn.cursor()
-        csv_files = glob.glob('*.csv') # Get list files
+        csv_files = glob.glob('*.csv')
         for file in csv_files:
             with open(file, 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
