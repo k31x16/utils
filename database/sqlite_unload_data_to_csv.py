@@ -22,5 +22,5 @@ def export_all_tables_to_csv(db_path, output_folder='csv_output'):
         print(f"Table {table_name} export in {output_file}")
     conn.close()
 
-database_path = 'myDB.db'
+database_path = 'myDB.sqlite3'
 export_all_tables_to_csv(database_path)
