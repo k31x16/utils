@@ -22,7 +22,7 @@ class loadDataToSQLite:
                 print(file)
                 create_table = f"CREATE TABLE IF NOT EXISTS {file.replace('.csv', '')} ({', '.join(header)})"
                 cursor.execute(create_table)
-                insert_query = f"INSERT INTO yandex VALUES ({', '.join(['?'] * len(header))})"
+                insert_query = f"INSERT INTO table_name VALUES ({', '.join(['?'] * len(header))})"
                 cursor.executemany(insert_query, reader)
         conn.commit()
         conn.close()
